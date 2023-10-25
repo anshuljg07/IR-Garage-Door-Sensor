@@ -6,10 +6,12 @@ import datetime
 import digitalio
 import board
 
+#using Brevo email service
+
 def sendEmail():
     ct = datetime.datetime.now()
 
-    subject = 'Test Email'
+    subject = 'ALERT! Signal Lost'
     html_content = f'<html><body><h1> No longer receiving Signal through IR to receiver!</h1><p>Current Timestamp: {ct}</p></body></html>'
     sender = {"name": "Anshul Gowda", "email": "anshuljg07@gmail.com"}
     to = [{"email": "indybomber@gmail.com", "name": "Rick Shumer"}]
@@ -31,15 +33,17 @@ def sendEmail():
 
 
 configuration = sib_api_v3_sdk.Configuration()
-configuration.api_key['api-key'] = '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'
+configuration.api_key['api-key'] = '{Enter API KEY}'
 api_instance = sib_api_v3_sdk.TransactionalEmailsApi(sib_api_v3_sdk.ApiClient(configuration))
 
 waveDetected = digitalio.DigitalInOut(board.D14)
 waveDetected.direction = digitalio.Direction.INPUT
+sent = False
 
 while True:
-    if waveDetected.value == False:
+    if waveDetected.value == 0:
         if sent == False:
+            print('No Signal Detected. Email Sent!!!')
             sendEmail()
             sent = True
     else:
