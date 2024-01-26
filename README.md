@@ -28,3 +28,13 @@ The receiver consists of multiples encapsulated stages designed for specific fun
   <br />
 From here there is a shift from hardware to software, where a python script local to the Pi constantly polls the state of the ADC output. If it is low, then no signal is detected by the receiver so an email is sent. We make use of the SendinBlue RESTFul API python wrapper, sib-api-v3-sdk, to send transactional emails. The contents of the email were organized to follow the requirements dictated by Simple Mail Transfer Protocol. This email object was then sent along with an API key provided by the Brevo SMTP service.
 </p>
+
+## Contributors
+This project was developed and is currently maintained by Rafael Ragel de la Tejera, Anshul Gowda, and Joseph Bartosyck.
+
+## Get in Contact:
+ [Anshul Gowda's LinkedIn](https://www.linkedin.com/in/anshul-gowda)
+<br />
+Rafael Rangel de la Tejera's LinkedIn
+<br />
+Joseph Bartosyck's de la Tejera's LinkedIn
